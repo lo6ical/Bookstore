@@ -28,6 +28,8 @@ public class BookstoreApplication {
 			crepository.save(c3);
 			
 			brepository.save(new Book("Example", "Max", 2001, "1234567891011", 20.5, c1));
+			brepository.save(new Book("Example", "Mike", 2006, "1234567891011", 38.5, c2));
+			brepository.save(new Book("Example", "Max", 2003, "1234567891011", 24.5, c3));
 			
 			
 			
