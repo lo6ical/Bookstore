@@ -18,31 +18,20 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookstore(BookRepository repository) { 
-		return (args) -> {
-			Book b1 = new Book("Example", "Max", 2001, "1234567891011", 20.5);
-			Book b2 = new Book("Title", "Author", 1998, "1234567891011", 15.0);
-			Book b3 = new Book("Title", "Author", 2008, "1234567891011", 25.0);
-			
-			
-			
-			repository.save(b1);
-			repository.save(b2);
-			repository.save(b3);
-		};
-	}
-	
-	@Bean
-	public CommandLineRunner category(CategoryRepository repository) {
+	public CommandLineRunner bookstore(BookRepository brepository, CategoryRepository crepository) { 
 		return (args) -> {
 			Category c1 = new Category("Sci-Fi");
+			crepository.save(c1);
 			Category c2 = new Category("Comedy");
+			crepository.save(c2);
 			Category c3 = new Category("Horror");
+			crepository.save(c3);
 			
-			repository.save(c1);
-			repository.save(c2);
-			repository.save(c3);
+			brepository.save(new Book("Example", "Max", 2001, "1234567891011", 20.5, c1));
+			
+			
+			
+			
 		};
 	}
-
 }

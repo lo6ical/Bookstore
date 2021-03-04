@@ -13,7 +13,7 @@ import fi.hh.swd20.bookstore.domain.BookRepository;
 @Controller
 public class BookController {
 	@Autowired
-	private BookRepository repository;
+	private BookRepository brepository;
 	
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String bookControl() {
@@ -22,13 +22,13 @@ public class BookController {
 	
 	@RequestMapping("/booklist")
 	public String bookList(Model model) {
-		model.addAttribute("books", repository.findAll());
+		model.addAttribute("books", brepository.findAll());
 		return "booklist";
 	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteBook(@PathVariable("id") Long bookId, Model model) {
-		repository.deleteById(bookId);
+		brepository.deleteById(bookId);
 		return "redirect:../booklist";
 	}
 	
@@ -40,7 +40,7 @@ public class BookController {
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Book book) {
-		repository.save(book);
+		brepository.save(book);
 		return "redirect:booklist";
 	}
 
