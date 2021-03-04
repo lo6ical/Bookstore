@@ -14,7 +14,7 @@ public class Book {
 	private String title;
 	private String author;
 	private int year;
-	private int isbn;
+	private String isbn;
 	private double price;
 	
 	public Book() {
@@ -22,11 +22,11 @@ public class Book {
 		this.title = null;
 		this.author = null;
 		this.year = 0;
-		this.isbn = 0;
+		this.isbn = null;
 		this.price = 0.0;
 	}
 	
-	public Book(String title, String author, int year, int isbn, double price) {
+	public Book(String title, String author, int year, String isbn, double price) {
 		super();
 		this.title = title;
 		this.author = author;
@@ -36,6 +36,10 @@ public class Book {
 	}
 
 	
+
+	public Long getId() {
+		return id;
+	}
 
 	public String getTitle() {
 		return title;
@@ -61,11 +65,11 @@ public class Book {
 		this.year = year;
 	}
 
-	public int getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 

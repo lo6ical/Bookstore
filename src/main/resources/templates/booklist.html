@@ -8,15 +8,23 @@
 	<h1>Books</h1>
 	<table>
 		<tbody>
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Year</th>
+				<th>isbn</th>
+				<th>Price</th>
+			</tr>
 			<tr th:each = "book : ${books}">
 				<td th:text="${book.title}"/>
 				<td th:text="${book.author}"/>
 				<td th:text="${book.year}"/>
 				<td th:text="${book.isbn}"/>
 				<td th:text="${book.price}"/>
+				<td><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
 			</tr>
-		
 		</tbody>
 	</table>
+	<a href="/add" class="btn btn-primary">Add Book</a>
 </body>
 </html>
