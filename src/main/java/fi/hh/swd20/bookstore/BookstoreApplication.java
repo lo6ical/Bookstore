@@ -1,5 +1,7 @@
 package fi.hh.swd20.bookstore;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +14,7 @@ import fi.hh.swd20.bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
-
+	private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
@@ -32,6 +34,17 @@ public class BookstoreApplication {
 			brepository.save(new Book("Example", "Max", 2003, "1234567891011", 24.5, c3));
 			
 			
+			log.info("Fetch all the categories");
+			for (Category category : crepository.findAll()) {
+
+					log.info(category.toString());
+			}
+
+			log.info("Fetch all the books");
+			for (Book book : brepository.findAll()) {
+
+				log.info(book.toString());
+			}
 			
 			
 		};
