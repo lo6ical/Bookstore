@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import fi.haagahelia.course.domain.Student;
 import fi.hh.swd20.bookstore.domain.Book;
 import fi.hh.swd20.bookstore.domain.BookRepository;
 import fi.hh.swd20.bookstore.domain.CategoryRepository;
