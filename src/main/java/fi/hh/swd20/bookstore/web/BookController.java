@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,11 @@ public class BookController {
 		return "index";
 	}
 	
+	@RequestMapping(value="/login")
+	public String login() {
+		return "login";
+	}
+	
 	//JSON fetch all
 	@RequestMapping(value="/books", method = RequestMethod.GET)
     public @ResponseBody List<Book> studentListRest() {	
@@ -47,6 +53,7 @@ public class BookController {
 		return "booklist";
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 		brepository.deleteById(bookId);
@@ -65,9 +72,9 @@ public class BookController {
 		brepository.save(book);
 		return "redirect:booklist";
 	}
-	
-
-	/*@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	/*
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String edit(@PathVariable(value="id") Long bookId, Model model) {
 		model.addAttribute("book", BookRepository.findById(bookId));
 		return "editbook";
